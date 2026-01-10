@@ -1,0 +1,94 @@
+# make sure we can print unicode characters
+export LC_CTYPE="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+################################################################################
+# Plugins (zinit)
+################################################################################
+
+source /usr/share/zinit/zinit.zsh
+
+# full repository clone
+zinit light joshskidmore/zsh-fzf-history-search     # shell history search
+zinit light zsh-users/zsh-completions               # non-standard completions
+zinit light zsh-users/zsh-autosuggestions           # fish-like completion
+zinit light zsh-users/zsh-syntax-highlighting       # syntax highlighting
+zinit light RaduMantu/zsh-spaceship                 # theme
+
+# single file downloads (OMZ = oh-my-zsh)
+zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh
+
+################################################################################
+# Configuration
+################################################################################
+
+# set custom location for spaceship theme config file
+export SPACESHIP_CONFIG="${HOME}/.config/spaceship.zsh"
+
+# deactivate python venv prompt; let theme script deal with that
+export VIRTUAL_ENV_DISABLE_PROMPT=0
+
+# allow root to source this file when switching users
+ZSH_DISABLE_COMPFIX="true"
+
+# use emacs-style bindkeys + ctrl-arrows
+bindkey -e
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+# enable zsh completion
+#   allow navigating suggestions with arrows
+#   allow substring and partial matching on <Tab>
+autoload -Uz compinit; compinit
+zstyle ':completion:*' menu select matcher-list \
+       'm:{a-zA-Z}={A-Za-z}' \
+       'r:|[._-]=* r:|=*' \
+       'l:|=* r:|=*'
+
+# enable color output for ls
+autoload -U colors && colors
+export LSCOLORS="gxfxcxdxbxegedabagacad"
+alias ls="ls --color=auto"
+
+# set more comprehensive search function for fzf
+export FZF_DEFAULT_COMMAND="find -L ."
+
+# needed by `git commit -s` for gpg-agent to prompt user for passphrase
+export GPG_TTY="$(tty)"
+
+# preferred editor
+export EDITOR="nvim"
+export VISUAL="nvim"
+export SYSTEMD_DITOR="nvim"
+export MANPAGER="nvim +Man!"
+
+# extend PATH variable
+export PATH="${PATH}:/home/mants/.local/bin"
+
+# use /usr/local/lib as fallback in ld-linux
+export LD_LIBRARY_PATH="/usr/local/bin"
+
+################################################################################
+# Aliases
+################################################################################
+
+# wayland aliases for copy-paste (use xclip for X11)
+alias cpy="wl-copy"
+alias pst="wl-paste"
+
+# aliases for l / ll / la
+alias l="ls -lahv"
+alias ll="ls -lhv"
+alias la="ls -lAhv"
+
+# always show color output
+alias ip="ip -c"
+alias less="less -R"
+alias hexedit="hexedit --color"
+
+# always use neovim
+alias vim="nvim"
+
+# start gdb in quiet mode
+alias gdb="gdb -q"
+
