@@ -65,6 +65,9 @@ vim.opt.listchars = {
 }
 vim.api.nvim_set_hl(0, "Whitespace", { fg = "#707880" })
 
+-- don't display ~ instead of inexistent lines
+vim.opt.fillchars = { eob = " " }
+
 -- set fill character for missing chunk in diff view
 vim.opt.fillchars:append({ diff = '╱' })
 
