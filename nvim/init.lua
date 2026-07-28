@@ -4,7 +4,7 @@ require("config.lazy")
 -- enable language servers (check associated .lua file in lsp/)
 -- disable LSP logging to prevent large log files (or set to "debug")
 vim.lsp.enable({ "clangd", "pylsp", "vimtex" })
-vim.lsp.set_log_level("off")
+vim.lsp.set_level = "off"
 
 -- diagnostics display preferences
 vim.diagnostic.config({
@@ -61,7 +61,7 @@ end)
 vim.opt.list = true
 vim.opt.listchars = {
     trail = '·',
-    tab = '  ',
+    tab = '» ',
 }
 vim.api.nvim_set_hl(0, "Whitespace", { fg = "#707880" })
 
