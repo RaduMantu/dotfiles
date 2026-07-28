@@ -1,9 +1,14 @@
 return {
-    -- https://cmp.saghen.dev/installation
+    -- https://main.cmp.saghen.dev/installation
     {
         "saghen/blink.cmp",
-        dependencies = { "rafamadriz/friendly-snippets" },
-        build = "cargo build --release",
+        dependencies = {
+            "saghen/blink.lib",
+            "rafamadriz/friendly-snippets"
+        },
+        build = function()
+            require("blink.cmp").build():pwait()
+        end,
         opts = {
             keymap = { preset = "super-tab" },
             appearance = {
@@ -13,7 +18,7 @@ return {
             sources = {
                 default = { 'lsp' },
             },
-            fuzzy = { implementation = "prefer_rust_with_warning" }
+            fuzzy = { implementation = "rust" }
         },
         opts_extend = { "sources.default" }
     }
