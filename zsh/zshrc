@@ -99,7 +99,7 @@ zstyle ':completion:*' menu select matcher-list \
        'm:{a-zA-Z}={A-Za-z}' \
        'r:|[._-]=* r:|=*' \
        'l:|=* r:|=*'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # enable color output for ls and grep
 autoload -U colors && colors
