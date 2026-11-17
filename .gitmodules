@@ -4,3 +4,6 @@
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "zsh/zsh-agnoster"]
+	path = zsh/zsh-agnoster
+	url = git@github.com:RaduMantu/zsh-agnoster.git
