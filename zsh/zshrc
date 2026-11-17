@@ -22,7 +22,7 @@ zinit light joshskidmore/zsh-fzf-history-search     # shell history search
 zinit light zsh-users/zsh-completions               # non-standard completions
 zinit light zsh-users/zsh-autosuggestions           # fish-like completion
 zinit light zsh-users/zsh-syntax-highlighting       # syntax highlighting
-zinit light RaduMantu/zsh-spaceship                 # theme
+zinit light RaduMantu/zsh-agnoster                  # theme
 
 # single file downloads (OMZ = oh-my-zsh)
 zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh
@@ -31,8 +31,8 @@ zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh
 # Configuration
 ################################################################################
 
-# set custom location for spaceship theme config file
-export SPACESHIP_CONFIG="${HOME}/.config/spaceship.zsh"
+# enable agnoster theme prompt substitution
+setopt PROMPT_SUBST
 
 # deactivate python venv prompt; let theme script deal with that
 export VIRTUAL_ENV_DISABLE_PROMPT=0
@@ -149,4 +149,6 @@ alias vim="nvim"
 # start gdb in quiet mode
 alias gdb="gdb -q"
 
+# nproc behaves oddly on Intel Core Ultra X7 358H
+alias nproc="nproc --all"
 
